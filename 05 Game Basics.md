@@ -15,15 +15,15 @@ The game itself is divided in only 3 different Rooms: `Stage`, `Console` and `Sk
 
 The Stage room is where all the actual gameplay will take place and it will have objects such as the player, enemies, projectiles, resources, powerups and so on. The gameplay is very similar to that of [Bit Blaster XL](http://store.steampowered.com/app/433950/) and is actually quite simple. I chose something this simple because it would allow me to focus on the other aspect of the game (the huge skill tree) more thoroughly than if the gameplay was more complicated.
 
-![](media/bytepath-5_01.png)
+![](media/bytepath-5_01.gif)
 
 The Console room is where all the "menu" kind of stuff happens: changing sound and video settings, seeing achievements, choosing which ship you want to play with, accessing the skill tree, and so on. Instead of creating various different menus it makes more sense for a game that has this sort of computery look to it (also known as lazy programmer art xD) to go for this, since the console emulates a terminal and the idea is that you (the player) are just playing the game through some terminal somewhere.
 
-![](media/bytepath-5_02.png)
+![](media/bytepath-5_02.gif)
 
 The SkillTree room is where all the passive skills can be acquired. In the Stage room you can get SP (skill points) that spawn randomly or after you kill enemies, and then once you die you can use those skill points to buy passive skills. The idea is to try something massive like [Path of Exile's Passive Skill Tree](https://www.pathofexile.com/passive-skill-tree) and I think I was mildly successful at that. The skill tree I built has between 600-800 nodes and I think that's good enough.
 
-![](media/bytepath-5_03.png)
+![](media/bytepath-5_03.gif)
 
 I'll go over the creation of each of those rooms in detail, including all skills in the skill tree. However, I highly encourage you to deviate from what I'm writing as much as possible. A lot of the decisions I'm making when it comes to gameplay are pretty much just my own preference, and you might prefer something different.
 
