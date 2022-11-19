@@ -69,13 +69,13 @@ ___
 
 Let's go over a small example of how we can map this system onto a real existing game. Let's look at Nuclear Throne:
 
-![img](media/bytepath-3_01.png)
+![](media/bytepath-3_01.png)
 
 Watch the first minute or so of [this video](https://www.youtube.com/watch?v=SsD6oRQWM6k) until the guy dies once to get an idea of what the game is like.
 
 The game loop is pretty simple and, for the purposes of this simple room setup it fits perfectly because no room needs continuity with previous rooms. (you can't go back to a previous map, for instance) The first screen you see is the main menu:
 
-![img](media/bytepath-3_02.png)
+![](media/bytepath-3_02.png)
 
 I'd make this a `MainMenu` room and in it I'd have all the logic needed for this menu to work. So the background, the five options, the effect when you select a new option, the little bolts of lightning on the edges of screen, etc. And then whenever the player would select an option I would call `gotoRoom(option_type)`, which would swap the current room to be the one created for that option. So in this case there would be additional `Play`, `CO-OP`, `Settings` and `Stats` rooms.
 
@@ -83,27 +83,27 @@ Alternatively, you could have one `MainMenu` room that takes care of all those a
 
 Anyway, the next thing that happens in the video is that the player picks the play option, and that looks like this:
 
-![img](media/bytepath-3_03.png)
+![](media/bytepath-3_03.png)
 
 New options appear and you can choose between normal, daily or weekly mode. Those only change the level generation seed as far as I remember, which means that in this case we don't need new rooms for each one of those options (can just pass a different seed as argument in the `gotoRoom` call). The player chooses the normal option and this screen appears:
 
-![img](media/bytepath-3_04.png)
+![](media/bytepath-3_04.png)
 
 I would call this the `CharacterSelect` room, and like the others, it would have everything needed to make that screen happen, the background, the characters in the background, the effects that happen when you move between selections, the selections themselves and all the logic needed for that to happen. Once the character is chosen the loading screen appears:
 
-![img](media/bytepath-3_05.png)
+![](media/bytepath-3_05.png)
 
 Then the game:
 
-![img](media/bytepath-3_06.png)
+![](media/bytepath-3_06.png)
 
 When the player finishes the current level this screen popups before the transition to the next one:
 
-![img](media/bytepath-3_07.png)
+![](media/bytepath-3_07.png)
 
 Once the player selects a passive from previous screen another loading screen is shown. Then the game again in another level. And then when the player dies this one:
 
-![img](media/bytepath-3_08.png)
+![](media/bytepath-3_08.png)
 
 All those are different screens and if I were to follow the logic I followed until now I'd make them all different rooms: `LoadingScreen`, `Game`, `MutationSelect` and `DeathScreen`. But if you think more about it some of those become redundant.
 
@@ -158,7 +158,7 @@ ___
 
 Let's look at an example that would make good use of this new system, this time with The Binding of Isaac:
 
-![img](media/bytepath-3_09.png)
+![](media/bytepath-3_09.png)
 
 Watch the first minute or so of [this video](https://www.youtube.com/watch?v=e0C14deMcrY). I'm going to skip over the menus and stuff this time and mostly focus on the actual gameplay. It consists of moving from room to room killing enemies and finding items. You can go back to previous rooms and those rooms retain what happened to them when you were there before, so if you killed the enemies and destroyed the rocks of a room, when you go back it will have no enemies and no rocks. This is a perfect fit for this system.
 
@@ -166,7 +166,7 @@ The way I'd setup things would be to have a `Room` room where all the gameplay o
 
 One of the things that happens in Isaac is that as you move from one room to the other there's a small transition that looks like this:
 
-![img](media/bytepath-3_10.gif)
+![](media/bytepath-3_10.gif)
 
 I didn't mention this in the Nuclear Throne example either, but that also has a few transitions that happen in between rooms. There are multiple ways to approach these transitions, but in the case of Isaac it means that two rooms need to be drawn at once, so using only one `current_room` variable doesn't really work. I'm not going to go over how to change the code to fix this, but I thought it'd be worth mentioning that the code I provided is not all there is to it and that I'm simplifying things a bit. Once I get into the actual game and implement transitions I'll cover this is more detail.
 

@@ -15,15 +15,15 @@ The game itself is divided in only 3 different Rooms: `Stage`, `Console` and `Sk
 
 The Stage room is where all the actual gameplay will take place and it will have objects such as the player, enemies, projectiles, resources, powerups and so on. The gameplay is very similar to that of [Bit Blaster XL](http://store.steampowered.com/app/433950/) and is actually quite simple. I chose something this simple because it would allow me to focus on the other aspect of the game (the huge skill tree) more thoroughly than if the gameplay was more complicated.
 
-![img](media/bytepath-5_01.png)
+![](media/bytepath-5_01.png)
 
 The Console room is where all the "menu" kind of stuff happens: changing sound and video settings, seeing achievements, choosing which ship you want to play with, accessing the skill tree, and so on. Instead of creating various different menus it makes more sense for a game that has this sort of computery look to it (also known as lazy programmer art xD) to go for this, since the console emulates a terminal and the idea is that you (the player) are just playing the game through some terminal somewhere.
 
-![img](media/bytepath-5_02.png)
+![](media/bytepath-5_02.png)
 
 The SkillTree room is where all the passive skills can be acquired. In the Stage room you can get SP (skill points) that spawn randomly or after you kill enemies, and then once you die you can use those skill points to buy passive skills. The idea is to try something massive like [Path of Exile's Passive Skill Tree](https://www.pathofexile.com/passive-skill-tree) and I think I was mildly successful at that. The skill tree I built has between 600-800 nodes and I think that's good enough.
 
-![img](media/bytepath-5_03.png)
+![](media/bytepath-5_03.png)
 
 I'll go over the creation of each of those rooms in detail, including all skills in the skill tree. However, I highly encourage you to deviate from what I'm writing as much as possible. A lot of the decisions I'm making when it comes to gameplay are pretty much just my own preference, and you might prefer something different.
 
@@ -35,11 +35,11 @@ This is just one idea and there are many different areas in which you could devi
 
 Now let's start with the Stage. The first thing we want (and this will be true for all rooms, not just the Stage) is for it to have a sort low resolution pixelated look to it. For instance, look at this circle:
 
-![img](media/bytepath-5_04.png)
+![](media/bytepath-5_04.png)
 
 And then look at this:
 
-![img](media/bytepath-5_05.png)
+![](media/bytepath-5_05.png)
 
 I want the second one. The reason for this is purely aesthetic and my own personal preference. There are a number of games that don't go for the pixelated look but still use simple shapes and colors to get a really nice look, like [this one](https://www.youtube.com/watch?v=4iLW0X69mfo). So it just depends on which style you prefer and how much you can polish it. But for this game I'll go with the pixelated look.
 
@@ -97,11 +97,11 @@ If you run the game now you should see a smaller window than you had before.
 
 Now, to achieve the pixelated look when we scale the window up we need to do some extra work. If you were to draw a circle at the center of the screen (`gw/2, gh/2`) right now, like this:
 
-![img](media/bytepath-5_06.png)
+![](media/bytepath-5_06.png)
 
 And scale the screen up directly by calling [`love.window.setMode`](https://love2d.org/wiki/love.window.setMode) with width `3*gw` and height `3*gh`, for instance, you'd get something like this:
 
-![img](media/bytepath-5_07.png)
+![](media/bytepath-5_07.png)
 
 And as you can see, the circle didn't scale up with the screen and it just stayed a small circle. And it also didn't stay centered on the screen, because `gw/2` and `gh/2` isn't the center of the screen anymore when it's scaled up by 3. What we want is to be able to draw a small circle at the base resolution of `480x270`, but then when the screen is scaled up to fit a normal monitor, the circle is also scaled up proportionally (and in a pixelated manner) and its position also remains proportionally the same. The easiest way to do that is by using a [`Canvas`](https://love2d.org/wiki/Canvas), which also goes by the name of framebuffer or render target in other engines. First, we'll create a canvas with the base resolution in the constructor of the `Stage` class:
 
@@ -147,7 +147,7 @@ We simply use [`love.graphics.draw`](https://love2d.org/wiki/love.graphics.draw)
 
 Note that we used `sx` and `sy` to scale the Canvas up. Those variables are set to 1 right now, but if you change those variables to 3, for instance, this is what would happen:
 
-![img](media/bytepath-5_08.png)
+![](media/bytepath-5_08.png)
 
 You can't see anything! But this is the because the circle that was now in the middle of the `480x270` canvas, is now in the middle of a `1440x810` canvas. Since the screen itself is only `480x270`, you can't see the entire Canvas that is bigger than the screen. To fix this we can create a function named `resize` in `main.lua` that will change both `sx` and `sy` as well as the screen size itself whenever it's called:
 
@@ -160,13 +160,13 @@ end
 
 And so if we call `resize(3)` in `love.load`, this should happen:
 
-![img](media/bytepath-5_09.png)
+![](media/bytepath-5_09.png)
 
 And this is roughly what we wanted. There's only one problem though: the circle looks kinda blurry instead of being properly pixelated.
 
 The reason for this is that whenever things are scaled up or down in LÖVE, they use a [FilterMode](https://love2d.org/wiki/FilterMode) and this filter mode is set to `'linear'` by default. Since we want the game to have a pixelated look we should change this to `'nearest'`. Calling [`love.graphics.setDefaultFilter`](https://love2d.org/wiki/love.graphics.setDefaultFilter) with the `'nearest'` argument at the start of `love.load` should fix the issue. Another thing to do is to set the [LineStyle](https://love2d.org/wiki/LineStyle) to `'rough'`. Because it's set to `'smooth'` by default, LÖVE primitives will be drawn with some aliasing to them, and this doesn't work for a pixelated look. If you do all that and run the code again, it should look like this:
 
-![img](media/bytepath-5_10.png)
+![](media/bytepath-5_10.png)
 
 And it looks crispy and pixelated like we wanted it to! Most importantly, now we can use one resolution to build the entire game around. If we want to spawn an object at the center of the screen then we can say that it's `x, y` position should be `gw/2, gh/2`, and no matter what the resolution that we need to serve, that object will always be at the center of the screen. This significantly simplifies the process and it means we only have to worry about how the game looks and how things are distributed around the screen once.
 
@@ -228,7 +228,7 @@ end
 
 And you'll see that the screen shakes like this when you press `f3`:
 
- ![img](media/bytepath-5_11.gif)
+ ![](media/bytepath-5_11.gif)
 
 The shake function is based on the one described on [this article](http://jonny.morrill.me/blog/view/14) and it takes in an amplitude (in pixels), a frequency and a duration. The screen will shake with a decay, starting from the amplitude, for duration seconds with a certain frequency. Higher frequencies means that the screen will oscillate more violently between extremes (amplitude, -amplitude), while lower frequencies will do the contrary.
 
@@ -247,7 +247,7 @@ end
 
 The camera smoother is set to `damped` with a value of `5`. This was reached through trial and error but basically it makes the camera focus on the target point in a smooth and nice way. And the reason I placed this code inside the Stage room is that right now we're working with the Stage room and that room happens to be the one where the camera will need to be centered in the middle and never really move (other than screen shakes). And so that results in this:
 
-![img](media/bytepath-5_12.gif)
+![](media/bytepath-5_12.gif)
 
 We will use a single global camera for the entire game since there's no real need to instantiate a separate camera for each room. The Stage room will not use the camera in any way other than screen shakes, so that's where I'll stop for now. Both the Console and SkillTree rooms will use the camera more extensively but we'll get to that when we get to it.
 
@@ -379,7 +379,7 @@ end
 
 If you run the game now you should see a small circle that is the Player:
 
-![img](media/bytepath-5_13.png)
+![](media/bytepath-5_13.png)
 
 ### Player Physics Exercises
 
@@ -467,7 +467,7 @@ And so here we simply that if the object has a `collider` attribute defined, the
 
 If you run the program now you should see this:
 
- ![img](media/bytepath-5_14.gif)
+ ![](media/bytepath-5_14.gif)
 
 And so you can see that the Player object moves around normally and changes its direction when left or right arrow keys are pressed. One detail that's important here is that what is being drawn is the Collider via the `world:draw()` call in the Area object. We don't really want to draw colliders only, so it makes sense to comment that line out and draw the Player object directly:
 
@@ -488,7 +488,7 @@ end
 
 And that looks like this:
 
- ![img](media/bytepath-5_15.gif)
+ ![](media/bytepath-5_15.gif)
 
 This again is basic trigonometry and uses the same idea as I explained a while ago. Generally whenever you want to get a position `B` that is `distance` units away from position `A` such that position `B` is positioned at a specific `angle` in relation to position `A`, the pattern is something like: `bx = ax + distance*math.cos(angle)` and `by = ay + distance*math.sin(angle)`. Doing this is a very very common occurence in 2D gamedev (in my experience at least) and so getting an instinctive handle on how this works is useful.
 
@@ -511,9 +511,9 @@ math.pi
 
 **70.** Does the acceleration attribute `a` need to exist? How could would the player's update function look like if it didn't exist? Are there any benefits to it being there at all?  
 **71.** Get the `(x, y)` position of point `B` from position `A` if the angle to be used is `-math.pi/4`, and the distance is `100`.  
-![img](media/bytepath-5_16.png)  
+![](media/bytepath-5_16.png)  
 **72.** Get the `(x, y)` position of point `C` from position `B` if the angle to be used is `math.pi/4`, and the distance if `50`. The position `A` and `B` and the distance and angle between them are the same as the previous exercise.  
-![img](media/bytepath-5_17.png)  
+![](media/bytepath-5_17.png)  
 **73.** Based on the previous two exercises, what's the general pattern involved when you want to get from point `A` to some point `C` when you all have to use are multiple points in between that all can be reached at through angles and distances?  
 **74.** The syncing of both representations of Player attributes and Collider attributes mentioned positions and velocities, but what about rotation? A collider has a rotation that can be accessed through [`getAngle`](https://love2d.org/wiki/Body:getAngle). Why not also sync that to the `r` attribute?
 
@@ -680,7 +680,7 @@ end
 
 And so what this does is that whenever you press `f1`, it will show you the amount of memory before a garbage collection cycle and the amount of memory after it, as well as showing you what object types are in memory. This is useful because now we can, for instance, create a new Stage full of objects, delete it, and then see if the memory remains the same (or acceptably the same hehexD) as it was before the Stage was created. If it remains the same then we aren't leaking memory, if it doesn't then it means we are and we need to track down the cause of it.
 
-![img](media/bytepath-5_18.png)
+![](media/bytepath-5_18.png)
 
 ### Garbage Collection Exercises
 

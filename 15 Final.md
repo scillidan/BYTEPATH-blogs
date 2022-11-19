@@ -241,7 +241,7 @@ We could have drawn everything directly to the screen instead of to the `final_c
 
 And so all that would end up looking like this:
 
-![img](media/bytepath-15_01.gif)
+![](media/bytepath-15_01.gif)
 
 And as expected, the trail alone is being RGB shifted and looks kinda glitchly like we wanted.
 

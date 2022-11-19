@@ -475,7 +475,7 @@ We simply go to the most obvious place where the event happens (in this case in 
 
 Now for the UI. In the final game it looks like this:
 
-![img](media\bytepath-9_01.png)
+![](media\bytepath-9_01.png)
 
 There's the number of skill points you have to the top-left, your score to the top-right, and then the fundamental player stats on the top and bottom middle of the screen. Let's start with the score. All we want to do here is print a number to the top-right of the screen. This could look like this:
 
@@ -543,7 +543,7 @@ The way we draw this bar is that it will be a filled rectangle with `hp_color` a
 
 The only bar that will be changed in any way is the one that is filled, and it will be changed according to the ratio of `hp/max_hp`. For instance, if `hp/max_hp` is 1, it means that the HP is full. If it's 0.5, then it means `hp` is half the size of `max_hp`. If it's 0.25, then it means it's 1/4 the size. And so if we multiply this ratio by the width the bar is supposed to have, we'll have a decent visual on how filled the player's HP is or isn't. If you do that it should look like this:
 
-![img](media\bytepath-9_02.gif)
+![](media\bytepath-9_02.gif)
 
 And you'll notice here that as the player gets his the bar responds accordingly.
 

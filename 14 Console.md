@@ -62,11 +62,11 @@ Additionally the `addLine` function has a delay. This delay is useful because wh
 
 All that should look like this:
 
-![img](media/bytepath-14_01.png)
+![](media/bytepath-14_01.png)
 
 And if we add multiple lines it also looks like expected:
 
-![img](media/bytepath-14_02.png)
+![](media/bytepath-14_02.png)
 
 ## Input Lines
 
@@ -175,13 +175,13 @@ In here the variable `x` will hold the position of our cursor. We add 8 to it be
 
 And all that should look like this:
 
-![img](media/bytepath-14_03.gif)
+![](media/bytepath-14_03.gif)
 
 ## Modules
 
 Modules are objects that contain certain logic to let the player do something in the console. For instance, the `ResolutionModule` that we'll implement will let the player change the resolution of the game. We'll separate modules from the rest of the Console room code because they can get a bit too involved with their logic, so having them as separate objects is a good idea. We'll implement a module that looks like this:
 
-![img](media/bytepath-14_04.gif)
+![](media/bytepath-14_04.gif)
 
 This module in particular gets created and added whenever the player has pressed enter after typing "resolution" on an input line. Once it's activated it takes control away from the console and adds a few lines with `Console:addLine` to it. It then also has some selection logic on top of those added lines so we can pick our target resolution. Once the resolution is picked and the player presses enter, the window is changed to reflect that new resolution, we add a new input line with `Console:addInputLine` and disable selection on this ResolutionModule object, giving control back to the console.
 

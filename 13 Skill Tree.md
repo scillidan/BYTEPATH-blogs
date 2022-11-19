@@ -50,7 +50,7 @@ So to get started with the tree's definition we need to think about what kinds o
 
 So, for instance, the "4% Increased HP" node shown in the gif below:
 
-![img](media/bytepath-13_01.gif)
+![](media/bytepath-13_01.gif)
 
 Could have a definition like this:
 
@@ -112,7 +112,7 @@ end
 
 So it's a simple object that doesn't extend from GameObject at all. And for now we'll just draw it at its position as a circle. If we go through the `nodes` list and call update/draw on each node we have in it, assuming we're locking the camera at position `0, 0` (unlike in Stage where we locked it at `gw/2, gh/2`) then it should look like this:
 
-![img](media/bytepath-13_02.png)
+![](media/bytepath-13_02.png)
 
 And as expected, both the nodes we defined in the tree file are shown here.
 
@@ -228,7 +228,7 @@ end
 
 And after doing all that it should look like this:
 
-![img](media/bytepath-13_03.png)
+![](media/bytepath-13_03.png)
 
 ___
 
@@ -247,7 +247,7 @@ tree[3] = {x = 32, y = 32, stats = {'4% Increased HP', 'hp_multiplier', 0.04}, l
 
 We want to achieve this:
 
-![img](media/bytepath-13_04.gif)
+![](media/bytepath-13_04.gif)
 
 No matter how zoomed in or zoomed out, whenever the user mouses over a node we want to display its stats in a small rectangle.
 
@@ -405,7 +405,7 @@ And I know that if I looked at code like this a few years ago I'd be really both
 
 Now that we can place nodes and link them together we have to code in the logic behind buying nodes. The tree will have one or multiple "entry points" from which the player can start buying nodes, and then from there he can only buy nodes that adjacent to one he already bought. For instance, in the way I set my own tree up, there's a central starting node that provides no bonuses and then from it 4 additional ones connect out to start the tree:
 
-![img](media/bytepath-13_05.png)
+![](media/bytepath-13_05.png)
 
 Suppose now that we have a tree that looks like this initially:
 
@@ -417,7 +417,7 @@ tree[3] = {x = 96, y = 0, stats = {'6% Increased HP', 'hp_multiplier', 0.06}, li
 tree[4] = {x = 144, y = 0, stats = {'4% Increased HP', 'hp_multiplier', 0.04}}
 ```
 
-![img](media/bytepath-13_06.png)
+![](media/bytepath-13_06.png)
 
 The first thing we wanna do is make it so that node [#1](https://github.com/a327ex/blog/issues/1) is already activated while the others are not. What I mean by a node being activated is that it has been bought by the player and so its effects will be applied in gameplay. Since node [#1](https://github.com/a327ex/blog/issues/1) has no effects, in this way we can create an "initial node" from where the tree will expand.
 
@@ -463,11 +463,11 @@ end
 
 We only activate a line if both of its nodes have been bought, which makes sense. If we say that `bought_node_indexes = {1}` in the SkillTree room constructor, now we'd get something like this:
 
-![img](media/bytepath-13_07.png)
+![](media/bytepath-13_07.png)
 
 And if we say that `bought_node_indexes = {1, 2}`, then we'd get this:
 
-![img](media/bytepath-13_08.png)
+![](media/bytepath-13_08.png)
 
 And this is working as we expected. Now what we want to do is add the logic necessary so that whenever we click on a node it will be bought if its connected to another node that has been bought. Figuring out if we have enough skill points to buy a certain node, or to add a confirmation step before fully committing to buying the node will be left as an exercise.
 
@@ -556,7 +556,7 @@ end
 
 And this should work as expected:
 
-![img](media/bytepath-13_09.gif)
+![](media/bytepath-13_09.gif)
 
 The very last idea we'll go over is how to apply our selected nodes to the player. This is simpler than it seems because of how we decided to structure everything in articles 11 and 12. The tree definition looks like this now:
 
@@ -599,11 +599,11 @@ It's important to note that different passives will need to be handled slightly 
 **224\. (CONTENT)** Implement skill points. We have a global `skill_points` variable which holds how many skill points the player has. This variable should be decreased by 1 whenever the player buys a new node in the skill tree. The player should not be allowed to buy more nodes if he has no skill points. The player can buy a maximum of 100 nodes. You may also want to change these numbers around a bit if you feel like it's necessary. For instance, in my game the cost of each node increases based on how many nodes the player has already bought.  
 **225\. (CONTENT)** Implement a step before buying nodes where the player can cancel his choices. This means that the player can click on nodes as if they were being bought, but to confirm the purchase he has to hit the "Apply Points" button. All selected nodes can be cancelled if he clicks the "Cancel" button instead. This is what it looks like:
 
-![img](media/bytepath-13_10.gif)
+![](media/bytepath-13_10.gif)
 
 **226\. (CONTENT)** Implement the skill tree. You can implement this skill tree to whatever size you see fit, but obviously the bigger it is the more possible interactions there will be and the more interesting it will be as well. This is what my tree looks like for reference:
 
-![img](media/bytepath-13_11.gif)
+![](media/bytepath-13_11.gif)
 
 Don't forget to add the appropriate behaviors for each different type of passive in the `treeToPlayer` function!
 

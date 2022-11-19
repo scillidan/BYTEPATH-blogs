@@ -283,7 +283,7 @@ else self.collider:setLinearVelocity(self.v*math.cos(self.r), self.v*math.sin(se
 
 This is a bit more confusing than the previous setup but it works. And if we test all this and create a projectile with the `attack` attribute set to `'Homing'` it should look like this:
 
-![img](media/bytepath-11_01.gif)
+![](media/bytepath-11_01.gif)
 
 **128\. (CONTENT)** Implement the `Homing` attack. Its definition on the attacks table looks like this:
 
@@ -293,7 +293,7 @@ attacks['Homing'] = {cooldown = 0.56, ammo = 4, abbreviation = 'H', color = skil
 
 And the attack itself looks like this:
 
-![img](media/bytepath-11_02.gif)
+![](media/bytepath-11_02.gif)
 
 Note that the projectile for this attack (as well as others that are to come) is slightly different. It's a rhombus half colored as white and half colored as the color of the attack (in this case `skill_point_color`), and it also has a trail that's the same as the player's.
 
@@ -397,7 +397,7 @@ end
 
 And then all that would end up looking like this:
 
-![img](media/bytepath-11_03.gif)
+![](media/bytepath-11_03.gif)
 
 **129\. (CONTENT)** Implement the `regain_hp_on_ammo_pickup_chance` passive. The amount of HP regained is 25 and should be added with the `addHP` function, which adds the given amount of HP to the `hp` value, making sure that it doesn't go above `max_hp`. Additionally, an `InfoText` object should be created with the text `'HP Regain!'` in `hp_color`.
 
@@ -537,7 +537,7 @@ end
 
 And this should work out as expected:
 
-![img](media/bytepath-11_04.gif)
+![](media/bytepath-11_04.gif)
 
 ### Chance to Barrage on Kill
 
@@ -596,7 +596,7 @@ end
 
 Most of this should be pretty straightforward. The only notable thing is that we use `after` inside a for loop to separate the creation of projectiles by 0.05 seconds between each other. Other than that we simply create the projectile with the given constraints. All that should look like this:
 
-![img](media/bytepath-11_05.gif)
+![](media/bytepath-11_05.gif)
 
 For the next exercises (and every one that comes after them), don't forget to create `InfoText` objects with the appropriate colors so that the player can tell when something happened.
 
@@ -904,7 +904,7 @@ end
 
 Here whenever a boost starts we call `timer:every` to roll a chance for the homing projectile every 0.2 seconds, and then whenever a boost ends we cancel that timer. Here's what that looks like if the chance of this event happening was 100%:
 
-![img](media/bytepath-11_06.gif)
+![](media/bytepath-11_06.gif)
 
 **147\. (CONTENT)** Implement the `cycle_speed_multiplier` variable. This variable makes the cycle speed faster or slower based on its value. So, for instance, if `cycle_speed_multiplier` is 2 and our default cycle duration is 5 seconds, then applying it would turn our cycle duration to 2.5 instead.  
 **148\. (CONTENT)** Implement the `increased_cycle_speed_while_boosting` passive. This variable should be a boolean that signals if the cycle speed should be increased or not whenever the player is boosting. The boost should be an increase of 200% to cycle speed multiplier.  
@@ -1041,7 +1041,7 @@ Now we'll focus on a few projectile passives. These passives will change how our
 
 We'll call this passive `projectile_ninety_degree_change` and what it will do is that the angle of the projectile will be changed by 90 degrees periodically. The way this looks is like this:
 
-![img](media/bytepath-11_07.gif)
+![](media/bytepath-11_07.gif)
 
 Notice that the projectile roughly moves in the same direction it was moving towards as it was shot, but its angle changes rapidly by 90 degrees each time. This means that the angle change isn't entirely randomly decided and we have to put some thought into it.
 
@@ -1081,7 +1081,7 @@ function Projectile:new(...)
 end
 ```
 
-![img](media/bytepath-11_08.gif)
+![](media/bytepath-11_08.gif)
 
 Now what we need to do is figure out how to turn the projectile in the other direction, and then turn it back in the other, and then again, and so on. It turns out that since this is a periodic thing that will happen forever, we can use `timer:every`:
 
@@ -1109,7 +1109,7 @@ At first we turn the projectile in the opposite direction that we turned it init
 
 Importantly, at the end of each `every` loop we change the direction it should turn towards, otherwise it wouldn't oscillate between up/down and would keep going up/down instead of straight. Doing all that looks like this:
 
-![img](media/bytepath-11_09.gif)
+![](media/bytepath-11_09.gif)
 
 **167\. (CONTENT)** Implement the `projectile_random_degree_change` passive, which changes the angle of the projectile randomly instead. Unlike the 90 degrees one, projectiles in this one don't need to retain their original direction.  
 **168\. (CONTENT)** Implement the `angle_change_frequency_multiplier` passive. This is a passive that increases or decreases the speed with which angles change in the previous 2 passives. If `angle_change_frequency_multiplier` is 2, for instance, then instead of angles changing with 0.25 and 0.1 seconds, they will change with 0.125 and 0.05 seconds instead.
@@ -1118,7 +1118,7 @@ Importantly, at the end of each `every` loop we change the direction it should t
 
 Instead of abruptly changing the angle of our projectile, we can do it softly using the `timer:tween` function, and in this way we can get a wavy projectile effect that looks like this:
 
-![img](media/bytepath-11_10.gif)
+![](media/bytepath-11_10.gif)
 
 The idea is almost the same as the previous examples but using `timer:tween` instead:
 
@@ -1148,7 +1148,7 @@ Because of the way `timer:every` works, in that it doesn't start performing its 
 
 Now we'll go for a few passives that change the speed of the projectile. The first one is "Fast -> Slow" and the second is "Slow -> Fast", meaning, the projectile starts with either fast or slow velocity, and then transitions into either slow or fast velocity. This is what "Fast -> Slow" looks like:
 
-![img](media/bytepath-11_11.gif)
+![](media/bytepath-11_11.gif)
 
 The way we'll implement this is pretty straightforward. For the "Fast -> Slow" one we'll tween the velocity to double its initial value quickly, and then after a while tween it down to half its initial value. And for the other we'll simply do the opposite.
 
@@ -1269,7 +1269,7 @@ end
 
 It's important to place this after any other calls we may make to `setLinearVelocity` otherwise things won't work out. We also shouldn't forget to add the global `time` variable and increase it by `dt` every frame. If we do that correctly then it should look like this:
 
-![img](media/bytepath-11_12.gif)
+![](media/bytepath-11_12.gif)
 
 And this gets the job done but it looks wrong. The main thing wrong with it is that the projectile's angles are not taking into account the rotation around the player. One way to fix this is to store the projectile's position last frame and then get the angle of the vector that makes up the subtraction of the current position by the previous position. Code is worth a thousand words so that looks like this:
 
@@ -1300,7 +1300,7 @@ end
 
 And in this way we're setting the `r` variable to contain the angle of the projectile while taking into account its rotation. Because we're using `setLinearVelocity` and using that angle, it means that when we draw the projectile in `Projectile:draw` and use `Vector(self.collider:getLinearVelocity()):angle())` to get our direction, everything will be set according what we set the `r` variable to. And so all that looks like this:
 
-![img](media/bytepath-11_13.gif)
+![](media/bytepath-11_13.gif)
 
 And this looks about right. One small problem that you can see in the gif above is that as projectiles are fired, if they turn into shield projectiles they don't do it instantly. There's a 1-2 frame delay where they look like normal projectiles and then they disappear and appear orbiting the player. One way to fix this is to just hide all shield projectiles for 1-2 frames and then unhide them:
 

@@ -47,7 +47,7 @@ love.graphics.draw(image, love.math.random(0, 800), love.math.random(0, 600))
 
 The default size of the window is `800x600`, so what this should do is randomly draw the image around the screen really fast:
 
-![img](media/bytepath-1_01.gif)
+![](media/bytepath-1_01.gif)
 
 Note that between every frame the screen is cleared, otherwise the image you're drawing randomly would slowly fill the entire screen as it is drawn in random positions. This happens because LÖVE provides a default game loop for its projects that clears the screen at the end of every frame. I'll go over this game loop and how you can change it now.
 

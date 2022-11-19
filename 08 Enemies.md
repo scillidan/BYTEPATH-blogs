@@ -15,7 +15,7 @@ Enemies in this game will work in a similar way to how the resources we created 
 
 We'll get started with the first enemy which is called `Rock`. It looks like this:
 
-![img](media/bytepath-8_01.gif)
+![](media/bytepath-8_01.gif)
 
 The constructor code for this object will be very similar to the `Boost` one, but with a few small differences:
 
@@ -97,7 +97,7 @@ We get its points first by using [`PolygonShape:getPoints`](https://love2d.org/w
 
 If you do all this it should look like this:
 
-![img](media/bytepath-8_02.gif)
+![](media/bytepath-8_02.gif)
 
 ### Enemies Exercises
 
@@ -126,7 +126,7 @@ ___
 
 After finishing these 4 exercises you should have completed everything needed for the interactions between Player, Projectile and Rock enemy to work like they should in the game. These interactions will hold true and be similar for other enemies as well. And it all should look like this:
 
-![img](media/bytepath-8_03.gif)
+![](media/bytepath-8_03.gif)
 
 ## EnemyProjectile
 
@@ -187,7 +187,7 @@ With all these small changes we have successfully create the EnemyProjectile obj
 
 This is what the Shooter enemy looks like:
 
-![img](media/bytepath-8_04.gif)
+![](media/bytepath-8_04.gif)
 
 As you can see, there's a little effect and then after a projectile is fired. The projectile looks just like the player one, except it's all red.
 
@@ -219,7 +219,7 @@ The line `direction == 1 and math.pi or 0` is basically how you do a ternary ope
 
 With all this, we can spawn Shooter objects and they should look like this:
 
-![img](media/bytepath-8_05.gif)
+![](media/bytepath-8_05.gif)
 
 Now we need to create the pre-attack effect. Usually in most games whenever an enemy is about to attack something happens that tells the player that enemy is about to attack. Most of the time it's an animation, but it could also be an effect. In our case we'll use a simple "charging up" effect, where a bunch of particles are continually sucked into the point where the projectile will come from until the release happens.
 
@@ -305,7 +305,7 @@ The reason we don't use `duration` by itself here is because this object is what
 
 In any case, if you run everything now it should look like this:
 
-![img](media/bytepath-8_06.gif)
+![](media/bytepath-8_06.gif)
 
 And this works well enough. But if you pay attention you'll notice that the target position of the particles (the position of the PreAttackEffect object) is staying still instead of following the Shooter. We can fix this in the same way we fixed the ShootEffect object for the player. We already have the `shooter` attribute pointing to the Shooter object that created the PreAttackEffect object, so we can just update PreAttackEffect's position based on the position of this `shooter` parent object:
 
@@ -321,7 +321,7 @@ end
 
 And so here every frame we're updating this objects position to be at the tip of the Shooter object that created it. If you run this it would look like this:
 
-![img](media/bytepath-8_07.gif)
+![](media/bytepath-8_07.gif)
 
 One important thing about the update code about is the `not self.shooter.dead` part. One thing that can happen when we reference objects within each other like this is that one object dies while another still holds a reference to it. For instance, the PreAttackEffect object lasts 0.75 seconds, but between its creation and its demise, the Shooter object that created it can be killed by the player, and if that happens problems can occur.
 
@@ -353,7 +353,7 @@ angle = math.atan2(target.y - source.y, target.x - source.x)
 
 And that's what we're doing here. After the object is spawned it will point itself towards the player and move there. It should look like this:
 
-![img](media/bytepath-8_08.gif)
+![](media/bytepath-8_08.gif)
 
 If you compare this to the initial gif on this section this looks a bit different. The projectiles there have a period where they slowly turn towards the player rather than coming out directly towards him. This uses the same piece of code as the homing passive that we will add eventually, so I'm gonna leave that for later.
 

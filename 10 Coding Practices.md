@@ -157,13 +157,13 @@ The analysis here is exactly as before. We need to think about how often this be
 
 If you did most of the exercises, there's a piece of code in the Player class that looks something like this:
 
-![img](media/bytepath-10_01.gif)
+![](media/bytepath-10_01.gif)
 
 It's basically two huge if/elseifs, one to handle the visuals for all possible ships, and another to handle the trails for those ships as well. One of the things you might think when looking at something like this is that it needs to be PURIFIED. But again, is it necessary? Unlike our previous examples this is not code that is repeating itself over multiple places, it's just a lot of code being displayed in sequence.
 
 One thing you might think to do is to abstract all those different ship types into different files, define their differences in those files and in the Player class we just read data from those files and it would be all clean and nice. And that's definitely something you could do, but in my opinion it falls under unnecessary abstraction. I personally prefer to just have straight code that shows itself clearly rather than have it spread over multiple layers of abstraction. If you're really bothered by this big piece of code right at the start of the Player class, you can put this into a function and place it at the bottom of the class. Or you can use folds, which is something your editor should support. Folds look like this in my editor, for instance:
 
-![img](media/bytepath-10_02.png)
+![](media/bytepath-10_02.png)
 
 ### Player Class Size
 
@@ -179,11 +179,11 @@ By definition ECS are a more complicated system to start with in a game. The poi
 
 Furthermore, I think that most indie games actually never get to the point where the ECS architecture actually starts paying off. If you take a look at this very scientific graph that I drew what I mean should become clear:
 
-![img](media/bytepath-10_03.png)
+![](media/bytepath-10_03.png)
 
 So the idea is that at the start, "yolo coding" (what I'm arguing for in this article) requires less effort to get things done when compared to ECS. As time passes and the project gets further along, the effort required for yolo coding increases while the effort required for ECS decreases, until a point is reached where ECS becomes more efficient than yolo coding. The point I wanna make is that most indie games, with very few exceptions (in my view at least) ever reach that intersection point between both lines.
 
-![img](media/bytepath-10_04.png)
+![](media/bytepath-10_04.png)
 
 And so if this is the case, and in my view it is, then it makes no sense to use something like an ECS. This also applies to a number of other programming techniques and practices that you see people promote. This entire article has been about that, essentially. There are things that pay off in the long run that are not good for indie game development because the long run never actually manifests itself.
 

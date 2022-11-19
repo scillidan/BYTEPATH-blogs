@@ -9,7 +9,7 @@ source: https://github.com/a327ex/blog/issues/26
 
 We'll start by implementing all attacks left. The first one is the Blast attack and it looks like this:
 
-![img](media/bytepath-12_01.gif)
+![](media/bytepath-12_01.gif)
 
 Multiples projectiles are fired like a shotgun with varying velocities and then they quickly disappear. All the colors are the ones `negative_colors` table and each projectile deals less damage than normal. This is what the attack table looks like:
 
@@ -95,7 +95,7 @@ This seems like a hacky solution, and you can easily imagine that it would get m
 
 The next attack we'll implement is the Spin one. It looks like this:
 
-![img](media/bytepath-12_02.gif)
+![](media/bytepath-12_02.gif)
 
 These projectiles just have their angle constantly changed by a fixed amount instead of going straight. The way we can achieve this is by adding a `rv` variable, which represents the angle's rate of change, and then every frame add this amount to `r`:
 
@@ -216,7 +216,7 @@ attacks['Flame'] = {cooldown = 0.048, ammo = 0.4, abbreviation = 'F', color = sk
 
 And this is what the attack looks like:
 
-![img](media/bytepath-12_03.gif)
+![](media/bytepath-12_03.gif)
 
 The projectiles should remain alive for a random duration between 0.6 and 1 second, and like the Blast projectiles, their velocity should be tweened to 0 over that duration. The projectiles also make use of the ProjectileTrail object in the way that the Spin projectiles do. Flame projectiles also deal decreased damage at 50 each.
 
@@ -294,11 +294,11 @@ attacks['Bounce'] = {cooldown = 0.32, ammo = 4, abbreviation = 'Bn', color = def
 
 And all that should look like this:
 
-![img](media/bytepath-12_04.gif)
+![](media/bytepath-12_04.gif)
 
 **174\. (CONTENT)** Implement the `2Split` attack. This is what it looks like:
 
-![img](media/bytepath-12_05.gif)
+![](media/bytepath-12_05.gif)
 
 It looks exactly like the Homing projectile, except that it uses `ammo_color` instead.
 
@@ -310,7 +310,7 @@ attacks['2Split'] = {cooldown = 0.32, ammo = 3, abbreviation = '2S', color = amm
 
 **175\. (CONTENT)** Implement the `4Split` attack. This is what it looks like:
 
-![img](media/bytepath-12_06.gif)
+![](media/bytepath-12_06.gif)
 
 It behaves exactly like the 2Split attack, except that it creates 4 projectiles instead of 2. The projectiles point at all 45 degrees angles from the center, meaning angles math.pi/4, 3\*math.pi/4, -math.pi/4 and -3\*math.pi/4. This is what the attack table looks like:
 
@@ -322,7 +322,7 @@ attacks['4Split'] = {cooldown = 0.4, ammo = 4, abbreviation = '4S', color = boos
 
 This is what the Lightning attack looks like:
 
-![img](media/bytepath-12_07.gif)
+![](media/bytepath-12_07.gif)
 
 Whenever the player reaches a certain distance from an enemy, a lightning bolt will be created, dealing damage to the enemy. Most of the work here lies in creating the lightning bolt, so we'll focus on that first. We'll do it by creating an object called `LightningLine`, which will be the visual representation of our lightning bolt:
 
@@ -477,11 +477,11 @@ attacks['Lightning'] = {cooldown = 0.2, ammo = 8, abbreviation = 'Li', color = d
 
 And all that should look like this:
 
-![img](media/bytepath-12_08.gif)
+![](media/bytepath-12_08.gif)
 
 **176\. (CONTENT)** Implement the `Explode` attack. This is what it looks like:
 
-![img](media/bytepath-12_09.gif)
+![](media/bytepath-12_09.gif)
 
 An explosion is created and it destroys all enemies in a certain radius around it. The projectile itself looks like the homing projectile except with `hp_color` and a bit bigger. The attack table looks like this:
 
@@ -491,7 +491,7 @@ attacks['Explode'] = {cooldown = 0.6, ammo = 4, abbreviation = 'E', color = hp_c
 
 **177\. (CONTENT)** Implement the `Laser` attack. This is what it looks like:
 
-![img](media/bytepath-12_10.gif)
+![](media/bytepath-12_10.gif)
 
 A huge line is created and it destroys all enemies that cross it. This can be programmed literally as a line or as a rotated rectangle for collision detection purposes. If you choose to go with a line then it's better to use 3 or 5 lines instead that are a bit separated from each other, otherwise the player can sometimes miss enemies in a way that doesn't feel fair.
 
@@ -548,13 +548,13 @@ And then all we have left to do is apply this to every instance where a `launch_
 **187\. (CONTENT)** Implement the `additional_barrage_projectiles` passive.  
 **188\. (CONTENT)** Implement the `barrage_nova` passive. This is a boolean that when set to true will make it so that barrage projectiles fire in a circle rather than in the general direction the player is looking towards. This is what it looks like:
 
-![img](media/bytepath-12_11.gif)
+![](media/bytepath-12_11.gif)
 
 ## Mine Projectile
 
 A mine projectile is a projectile that stays around the location it was created at and eventually explodes. This is what it looks like:
 
-![img](media/bytepath-12_12.gif)
+![](media/bytepath-12_12.gif)
 
 As you can see, it just rotates like a Spin attack projectile but at a much faster rate. To implement this all we'll do is say that whenever the `mine` attribute is true for a projectile, it will behave like Spin projectiles do but with an increased spin velocity.
 
@@ -587,7 +587,7 @@ Additionally, after a random duration of between 8 and 12 seconds the projectile
 **190\. (CONTENT)** Implement the `projectiles_explode_on_expiration` passive, which makes it so that whenever projectiles die because their duration ended, they will also explode. This should only apply to when their duration ends. If a projectile comes into contact with an enemy or a wall it shouldn't explode as a result of this passive being set to true.  
 **191\. (CONTENT)** Implement the `self_explode_on_cycle_chance` passive. This passive adds a chance for the player to create explosions around himself on each cycle. This is what it looks like:
 
-![img](media/bytepath-12_13.gif)
+![](media/bytepath-12_13.gif)
 
 The explosions used are the same ones as for the Explode attack. The number, placement and size of the explosions created will be left for you to decide based on what you feel is best.
 
@@ -649,7 +649,7 @@ Since `setStats` is called at the end of the constructor and after the `treeToPl
 
 **193\. (CONTENT)** Change the HP UI so that whenever `energy_shield` is set to true is looks like this instead:
 
-![img](media/bytepath-12_14.gif)
+![](media/bytepath-12_14.gif)
 
 **194\. (CONTENT)** Implement the `energy_shield_recharge_amount_multiplier` passive, which increases or decreases the amount of ES recharged per second.  
 **195\. (CONTENT)** Implement the `energy_shield_recharge_cooldown_multiplier` passive, which increases or decreases the cooldown duration before ES starts recharging after a hit.
@@ -767,19 +767,19 @@ But before we get to tree (which we'll go over in the next article), now that we
 
 **212\. (CONTENT)** Implement the `BigRock` enemy. This enemy behaves just like the `Rock` one, except it's bigger and splits into 4 `Rock` objects when killed. It has 300 HP by default.
 
-![img](media/bytepath-12_15.gif)
+![](media/bytepath-12_15.gif)
 
 **213\. (CONTENT)** Implement the `Waver` enemy. This enemy behaves like a wavy projectile and occasionally shoots projectiles out of its front and back (like the Back attack). It has 70 HP by default.
 
-![img](media/bytepath-12_16.gif)
+![](media/bytepath-12_16.gif)
 
 **214\. (CONTENT)** Implement the `Seeker` enemy. This enemy behaves like the Ammo object and moves slowly towards the player. At a fixed interval this enemy will also release mines that behave in the same way as mine projectiles. It has 200 HP by default.
 
-![img](media/bytepath-12_17.gif)
+![](media/bytepath-12_17.gif)
 
 **215\. (CONTENT)** Implement the `Orbitter` enemy. This enemy behaves like the Rock or BigRock enemies, but has a field of projectiles surrounding him. Those projectiles behave just like shield projectiles we implemented in the last article. If the Orbitter dies before his projectiles, the leftover projectiles will start homing towards the player for a short duration. It has 450 HP by default.
 
-![img](media/bytepath-12_18.gif)
+![](media/bytepath-12_18.gif)
 
 ## Ships
 
@@ -787,7 +787,7 @@ We already went over visuals for all the ships in article 5 or 6 I think and if 
 
 **216\. (CONTENT)** Implement the `Crusader` ship:
 
-![img](media/bytepath-12_19.gif)
+![](media/bytepath-12_19.gif)
 
 Its stats are as follows:
 
@@ -802,7 +802,7 @@ Its stats are as follows:
 
 **217\. (CONTENT)** Implement the `Rogue` ship:
 
-![img](media/bytepath-12_20.gif)
+![](media/bytepath-12_20.gif)
 
 Its stats are as follows:
 
@@ -817,7 +817,7 @@ Its stats are as follows:
 
 **218\. (CONTENT)** Implement the `Bit Hunter` ship:
 
-![img](media/bytepath-12_21.gif)
+![](media/bytepath-12_21.gif)
 
 Its stats are as follows:
 
@@ -835,7 +835,7 @@ Its stats are as follows:
 
 **219\. (CONTENT)** Implement the `Sentinel` ship:
 
-![img](media/bytepath-12_22.gif)
+![](media/bytepath-12_22.gif)
 
 Its stats are as follows:
 
@@ -843,7 +843,7 @@ Its stats are as follows:
 
 **220\. (CONTENT)** Implement the `Striker` ship:
 
-![img](media/bytepath-12_23.gif)
+![](media/bytepath-12_23.gif)
 
 Its stats are as follows:
 
@@ -858,7 +858,7 @@ Its stats are as follows:
 
 **221\. (CONTENT)** Implement the `Nuclear` ship:
 
-![img](media/bytepath-12_24.gif)
+![](media/bytepath-12_24.gif)
 
 Its stats are as follows:
 
@@ -876,7 +876,7 @@ Its stats are as follows:
 
 **222\. (CONTENT)** Implement the `Cycler` ship:
 
-![img](media/bytepath-12_25.gif)
+![](media/bytepath-12_25.gif)
 
 Its stats are as follows:
 
@@ -884,7 +884,7 @@ Its stats are as follows:
 
 **223\. (CONTENT)** Implement the `Wisp` ship:
 
-![img](media/bytepath-12_26.gif)
+![](media/bytepath-12_26.gif)
 
 Its stats are as follows:
 

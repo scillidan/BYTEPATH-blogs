@@ -117,9 +117,9 @@ This is a lot more straightforward. It simply goes over the files and calls `req
 ### OOP Exercises
 
 **6.** Create a `Circle` class that receives `x`, `y` and `radius` arguments in its constructor, has `x`, `y`, `radius` and `creation_time` attributes and has `update` and `draw` methods. The `x`, `y` and `radius` attributes should be initialized to the values passed in from the constructor and the `creation_time` attribute should be initialized to the relative time the instance was created (see [love.timer](https://love2d.org/wiki/love.timer)). The `update` method should receive a `dt` argument and the draw function should draw a white filled circle centered at `x, y` with `radius` radius (see [love.graphics](https://love2d.org/wiki/love.graphics)). An instance of this `Circle` class should be created at position 400, 300 with radius 50. It should also be updated and drawn to the screen. This is what the screen should look like:  
-![img](media/bytepath-2_01.png)  
+![](media/bytepath-2_01.png)  
 **7.** Create an `HyperCircle` class that inherits from the `Circle` class. An `HyperCircle` is just like a `Circle`, except it also has an outer ring drawn around it. It should receive additional arguments `line_width` and `outer_radius` in its constructor. An instance of this `HyperCircle` class should be created at position 400, 300 with radius 50, line width 10 and outer radius 120. This is what the screen should look like:  
-![img](media/bytepath-2_02.png)  
+![](media/bytepath-2_02.png)  
 **8.** What is the purpose of the `:` operator in Lua? How is it different from `.` and when should either be used?  
 **9.** Suppose we have the following code:  
 ```lua
@@ -349,7 +349,7 @@ end
 
 The `tween` function is the hardest one to get used to because there are so many arguments, but it takes in a number of seconds, the subject table, the target table and a tween mode. Then it performs the tween on the subject table towards the values in the target table. So in the example above, the table `circle` has a key `radius` in it with the initial value of 24. Over the span of 6 seconds this value will changed to 96 using the `in-out-cubic` tween mode. (here's a [useful list of all tweening modes](http://easings.net/)) It sounds complicated but it looks like this:
 
-![img](media/bytepath-2_03.gif)
+![](media/bytepath-2_03.gif)
 
 The `tween` function can also take an additional argument after the tween mode which is a function to be called when the tween ends. This can be used for a number of purposes, but taking the previous example, we could use it to make the circle shrink back to normal after it finishes expanding:
 
@@ -367,7 +367,7 @@ end
 
 And that looks like this:
 
-![img](media/bytepath-2_04.gif)
+![](media/bytepath-2_04.gif)
 
 These 3 functions - `after`, `every` and `tween` - are by far in the group of most useful functions in my code base. They are very versatile and they can achieve a lot of stuff. So make you sure you have some intuitive understanding of what they're doing!
 
@@ -430,11 +430,11 @@ end
 
 Using only the `tween` function, tween the `w` attribute of the first rectangle over 1 second using the `in-out-cubic` tween mode. After that is done, tween the `h` attribute of the second rectangle over 1 second using the `in-out-cubic` tween mode. After that is done, tween both rectangles back to their original attributes over 2 seconds using the `in-out-cubic` tween mode. It should look like this:
 
-![img](media/bytepath-2_05.gif)
+![](media/bytepath-2_05.gif)
 
 **23.** For this exercise you should create an HP bar. Whenever the user presses the `d` key the HP bar should simulate damage taken. It should look like this:
 
-![img](media/bytepath-2_06.gif)
+![](media/bytepath-2_06.gif)
 
 As you can see there are two layers to this HP bar, and whenever damage is taken the top layer moves faster while the background one lags behind for a while.
 

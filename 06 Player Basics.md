@@ -13,11 +13,11 @@ In this section we'll focus on adding more functionality to the Player class. Fi
 
 The way the player will attack in this game is that each `n` seconds an attack will be triggered and executed automatically. In the end there will be 16 types of attacks, but pretty much all of them have to do with shooting projectiles in the direction that the player is facing. For instance, this one shoots homing projectiles:
 
-![img]media/(bytepath-6_1.gif)
+![]media/(bytepath-6_1.gif)
 
 While this one shoots projectiles at a faster rate but at somewhat random angles:
 
-![img]media/(bytepath-6_2.gif)
+![]media/(bytepath-6_2.gif)
 
 Attacks and projectiles will have all sorts of different properties and be affected by different things, but the core of it is always the same.
 
@@ -60,7 +60,7 @@ end
 
 And that looks like this:
 
-![img]media/(bytepath-6_3.gif)
+![]media/(bytepath-6_3.gif)
 
 The effect code is rather straight forward. It's just a square of width 8 that lasts for 0.1 seconds, and this width is tweened down to 0 along that duration. One problem with the way things are now is that the effect's position is static and doesn't follow the player. It seems like a small detail because the duration of the effect is small, but try changing that to 0.5 seconds or something longer and you'll see what I mean.
 
@@ -139,13 +139,13 @@ How would you change the player object so that instead of shooting every 0.24 se
 
 **81.** In the last article we went over garbage collection and how forgotten references can be dangerous and cause leaks. In this article I explained how we will reference objects within one another using the Player and ShootEffect objects as examples. In this instance where the ShootEffect is a short-lived object that contains a reference to the Player inside it, do we need to care about dereferencing the Player reference so that it can be collected eventually or is it not necessary? In a more general way, when do we need to care about dereferencing objects that reference each other like this?  
 **82.** Using `pushRotate`, rotate the player around its center by 180 degrees. It should look like this:  
-![img]media/(bytepath-6_4.gif)  
+![]media/(bytepath-6_4.gif)  
 **83.** Using `pushRotate`, rotate the line that points in the player's moving direction around its center by 90 degrees. It should look like this:  
-![img]media/(bytepath-6_5.gif)  
+![]media/(bytepath-6_5.gif)  
 **84.** Using `pushRotate`, rotate the line that points in the player's moving direction around the player's center by 90 degrees. It should look like this:  
-![img]media/(bytepath-6_6.gif)  
+![]media/(bytepath-6_6.gif)  
 **85.** Using `pushRotate`, rotate the ShootEffect object around the player's center by 90 degrees (on top of already rotating it by the player's direction). It should look like this:  
-![img]media/(bytepath-6_7.gif)
+![]media/(bytepath-6_7.gif)
 
 ## Player Projectile
 
@@ -206,15 +206,15 @@ end
 
 And that should look like this:
 
-![img]media/(bytepath-6_8.gif)
+![]media/(bytepath-6_8.gif)
 
 ### Player Projectile Exercises
 
 **86.** From the player's shoot function, change the size/radius of the created projectiles to 5 and their velocity to 150.  
 **87.** Change the shoot function to spawn 3 projectiles instead of 1, while 2 of those projectiles are spawned with angles pointing to the player's angle +-30 degrees. It should look like this:  
-![img]media/(bytepath-6_9.gif)  
+![]media/(bytepath-6_9.gif)  
 **88.** Change the shoot function to spawn 3 projectiles instead of 1, with the spawning position of each side projectile being offset from the center one by 8 pixels. It should look like this:  
-![img](media/bytepath-6_10.gif)  
+![](media/bytepath-6_10.gif)  
 **89.** Change the initial projectile speed to 100 and make it accelerate up to 400 over 0.5 seconds after its creation.
 
 ## Player & Projectile Death
@@ -300,7 +300,7 @@ skill_point_color = {255, 198, 93}
 
 For the projectile death effect I'm using `hp_color` (red) to show what the effect looks like, but the proper way to do this in the future will be to use the color of the projectile object. Different attack types will have different colors and so the death effect will similarly have different colors based on the attack. In any case, the way the effect looks like is this:
 
-![img](media/bytepath-6_11.gif)
+![](media/bytepath-6_11.gif)
 
 ___
 
@@ -361,7 +361,7 @@ end
 
 And all that looks like this:
 
-![img](media/bytepath-6_12.gif)
+![](media/bytepath-6_12.gif)
 
 This doesn't look very dramatic though. One way of really making something seem dramatic is by slowing time down a little. This is something a lot of people don't notice, but if you pay attention lots of games slow time down slightly whenever you get hit or whenever you die. A good example is Downwell, [this video](https://www.youtube.com/watch?v=kY83H8BdxhI#t=2m04s) shows its gameplay and I marked the time when a hit happens so you can pay attention and see it for yourself.
 
@@ -388,7 +388,7 @@ And so calling `slow(0.5, 1)` means that the game will be slowed to 50% speed in
 
 If we call `slow(0.15, 1)` when the player dies it looks like this:
 
-![img](media/bytepath-6_13.gif)
+![](media/bytepath-6_13.gif)
 
 Another thing we can do is add a screen shake to this. The camera module already has a `:shake` function to it, and so we can add the following:
 
@@ -443,7 +443,7 @@ end
 
 Gets us this:
 
-![img](media/bytepath-6_14.gif)
+![](media/bytepath-6_14.gif)
 
 Very subtle and barely noticeable, but it's small details like these that make things feel more impactful and nicer.
 
@@ -466,7 +466,7 @@ end
 
 In the tick function, for now the only thing we'll do is add a little visual effect called `TickEffect` any time a tick happens. This effect is similar to the refresh effect in Downwell (see Downwell video I mentioned earlier in this article), in that it's a big rectangle over the Player that goes up a little. It looks like this:
 
-![img](media/bytepath-6_15.gif)
+![](media/bytepath-6_15.gif)
 
 The first thing to notice is that it's a big rectangle that covers the player and gets smaller over time. But also that, like the ShootEffect, it follows the player. Which means that we know we'll need to pass the Player object as a reference to the TickEffect object:
 
@@ -544,7 +544,7 @@ With this, every frame we're setting `max_v` to `base_max_v` and then we're chec
 
 Now that we have the basic boost functionality working, we can add some visuals. The way we'll do this is by adding trails to the player object. This is what they'll look like:
 
-![img](media/bytepath-6_16.gif)
+![](media/bytepath-6_16.gif)
 
 The creation of trails in general follow a pattern. And the way I do it is to create a new object every frame or so and then tween that object down over a certain duration. As the frames pass and you create object after object, they'll all be drawn near each other and the ones that were created earlier will start getting smaller while the ones just created will still be bigger, and the fact that they're all created from the bottom part of the player and the player is moving around, means that we'll get the desired trail effect.
 
@@ -611,7 +611,7 @@ This is both because covering literally everything with all details would take a
 
 In any case, let's get started on one ship. This is what it looks like:
 
-![img](media/bytepath-6_17.gif)
+![](media/bytepath-6_17.gif)
 
 As you can see, it has 3 parts to it, one main body and two wings. The way we'll draw this is as a collection of simple polygons, and so we have to define 3 different polygons. We'll define the polygon's positions as if it is turned to the right (0 angle, as I explained previously). It will be something like this:
 
@@ -717,7 +717,7 @@ self.polygons[3] = {
 
 The first one is the main body, the second is the top wing and the third is the bottom wing. All vertices are defined in an anti-clockwise manner, and the first point of a line is always the x component, while the second is the y component. Here I'll show a drawing that maps each vertex to the numbers outlined to the side of each point pair above:
 
-![img](media/bytepath-6_18.gif)
+![](media/bytepath-6_18.gif)
 
 And as you can see, the first point is way to the right and vertically aligned with the center, so its `self.w, 0`. The next is a bit to the left and above the first, so its `self.w/2, -self.w/2`, and so on.
 
@@ -746,7 +746,7 @@ And here we use the technique of going from point to point based on an angle to 
 
 And all this looks like this:
 
-![img](media/bytepath-6_19.png)
+![](media/bytepath-6_19.png)
 
 ## Ship Visuals Exercises
 
@@ -754,4 +754,4 @@ As a small note, the **(CONTENT)** tag will mark exercises that are the content 
 
 **92\. (CONTENT)** Add 7 more ship types. To add a new ship type, simply add another conditional `elseif self.ship == 'ShipName' then` to both the polygon definition and the trail definition. Here's what the ships I made look like (but obviously feel free to be 100% creative and do your own designs):
 
-![img](media/bytepath-6_20.gif)
+![](media/bytepath-6_20.gif)
