@@ -1,9 +1,11 @@
----
+<!-- ---
 title: "07 Player Stats and Attacks"
 date: 2018-02-13
 author: https://github.com/a327ex
 source: https://github.com/a327ex/blog/issues/21
----
+--- -->
+
+# Player Stats and Attacks
 
 ## Introduction
 
