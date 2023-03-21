@@ -6,6 +6,7 @@ src = "src"
 title = "𝕭𝖄𝕿𝕮𝕻𝕬𝕿𝕳 𝖉𝖑𝖔𝖌𝖘"
 
 [output.html]
-theme = "my-theme"
 default-theme = "ayu"
 preferred-dark-theme = "ayu"
+git-repository-url = "https://github.com/scillidan/BYTEPATH-blogs"
+git-repository-icon = "fa-github"
