@@ -60,7 +60,7 @@ The default game loop LÖVE uses can be found in the [`love.run`](https://love2d
 ```lua
 function love.run()
     if love.math then
-love.math.setRandomSeed(os.time())
+    love.math.setRandomSeed(os.time())
     end
 
     if love.load then love.load(arg) end
@@ -81,27 +81,27 @@ love.math.setRandomSeed(os.time())
         return a
     end
         end
-love.handlers[name](a,b,c,d,e,f)
+    love.handlers[name](a,b,c,d,e,f)
     end
-        end
+    end
 
--- Update dt, as we'll be passing it to update
-if love.timer then
-    love.timer.step()
-    dt = love.timer.getDelta()
-end
+    -- Update dt, as we'll be passing it to update
+    if love.timer then
+        love.timer.step()
+        dt = love.timer.getDelta()
+    end
 
--- Call update and draw
-if love.update then love.update(dt) end -- will pass 0 if love.timer is disabled
+    -- Call update and draw
+    if love.update then love.update(dt) end -- will pass 0 if love.timer is disabled
 
-if love.graphics and love.graphics.isActive() then
-    love.graphics.clear(love.graphics.getBackgroundColor())
-    love.graphics.origin()
-            if love.draw then love.draw() end
-    love.graphics.present()
-end
+    if love.graphics and love.graphics.isActive() then
+        love.graphics.clear(love.graphics.getBackgroundColor())
+        love.graphics.origin()
+                if love.draw then love.draw() end
+        love.graphics.present()
+    end
 
-if love.timer then love.timer.sleep(0.001) end
+    if love.timer then love.timer.sleep(0.001) end
     end
 end
 ```
