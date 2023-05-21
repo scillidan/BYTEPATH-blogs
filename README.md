@@ -6,4 +6,6 @@ A binding book made from [a327ex/blog](https://github.com/a327ex/blog) of [BYTEP
 License under [MIT](https://github.com/scillidan/BYTEPATH/blob/main/LICENSE).  
 It's a textbook for me to learn Lua and Love2d. Although I haven't started yet.
 
+## Screenshot
+
 ![](BYTEPATH-blogs.png)
