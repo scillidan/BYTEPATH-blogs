@@ -1,12 +1,20 @@
 [book]
-authors = ["a327ex"]
+title = "𝕭𝖄𝕿𝕮𝕻𝕬𝕿𝕳 𝖉𝖑𝖔𝖌𝖘"
+author = "a327ex"
 language = "en"
 multilingual = false
 src = "src"
-title = "𝕭𝖄𝕿𝕮𝕻𝕬𝕿𝕳 𝖉𝖑𝖔𝖌𝖘"
 
 [output.html]
 default-theme = "ayu"
 preferred-dark-theme = "ayu"
 git-repository-url = "https://github.com/scillidan/BYTEPATH-blogs"
 git-repository-icon = "fa-github"
+
+# [output.epub]
+# additional-css = ["./path/to/main.css"]
+# use-default-css = false
+# cover-image = "ebook-cover.png"
+# additional-resources = ["./assets/Open-Sans-Regular.ttf"]
+# no-section-label = true
+# curly-quotes = true
