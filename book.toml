@@ -1,6 +1,7 @@
 [book]
 title = "𝕭𝖄𝕿𝕮𝕻𝕬𝕿𝕳 𝖉𝖑𝖔𝖌𝖘"
 author = "a327ex"
+description = "A DevLog/Blog book binding from BYTEPATH by a327ex."
 language = "en"
 multilingual = false
 src = "src"
@@ -11,10 +12,12 @@ preferred-dark-theme = "ayu"
 git-repository-url = "https://github.com/scillidan/BYTEPATH-blogs"
 git-repository-icon = "fa-github"
 
-# [output.epub]
+[output.epub]
 # additional-css = ["./path/to/main.css"]
 # use-default-css = false
 # cover-image = "ebook-cover.png"
 # additional-resources = ["./assets/Open-Sans-Regular.ttf"]
-# no-section-label = true
-# curly-quotes = true
+no-section-label = true
+curly-quotes = true
+epub-version = 3
+footnote-backrefs = true
