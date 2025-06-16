@@ -1,9 +1,9 @@
-<!-- ---
+---
 title: "01 Game Loop"
 date: 2018-02-12
 author: https://github.com/a327ex
 source: https://github.com/a327ex/blog/issues/15
---- -->
+---
 
 # Game Loop
 

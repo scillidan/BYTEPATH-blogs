@@ -1,9 +1,9 @@
-<!-- ---
+---
 title: "05 Game Basics"
 date: 2018-02-12
 author: https://github.com/a327ex
 source: https://github.com/a327ex/blog/issues/19
---- -->
+---
 
 # Game Basics
 

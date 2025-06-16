@@ -1,23 +1,43 @@
 [book]
-title = "𝕭𝖄𝕿𝕮𝕻𝕬𝕿𝕳 𝖉𝖑𝖔𝖌𝖘"
+title = "BYTEPATH-blogs"
 author = "a327ex"
-description = "A DevLog/Blog book binding from BYTEPATH by a327ex."
+description = "A Blog/DevLog copy/notebook binding from a327ex's blog of BYTEPATH."
 language = "en"
 multilingual = false
 src = "src"
 
+# [output.epub]
+# # additional-css = ["./path/to/main.css"]
+# # use-default-css = false
+# # cover-image = "ebook-cover.png"
+# # additional-resources = ["./assets/Open-Sans-Regular.ttf"]
+# no-section-label = true
+# curly-quotes = true
+# epub-version = 3
+# footnote-backrefs = true
+
 [output.html]
 default-theme = "ayu"
 preferred-dark-theme = "ayu"
-git-repository-url = "https://github.com/scillidan/BYTEPATH-blogs"
 git-repository-icon = "fa-github"
+git-repository-url = "https://github.com/scillidan/BYTEPATH-blogs"
+edit-url-template = "https://github.com/scillidan/BYTEPATH-blogs/main/{path}"
+# git-branch = "main"
+# open-on-text = "[Edit this page.]"
+# additional-css = ["asset/open-on-gh.css"]
 
-[output.epub]
-# additional-css = ["./path/to/main.css"]
-# use-default-css = false
-# cover-image = "ebook-cover.png"
-# additional-resources = ["./assets/Open-Sans-Regular.ttf"]
-no-section-label = true
-curly-quotes = true
-epub-version = 3
-footnote-backrefs = true
+[output.linkcheck]
+
+[preprocessor.metadata]
+# default-author = "Jane Doe"
+valid-tags = ["title", "date", "author", "source"]
+continue-on-error = true
+
+# [preprocessor.open-on-gh]
+# command = "mdbook-open-on-gh"
+# renderer = ["html"]
+
+# [preprocessor.toc]
+# command = "mdbook-toc"
+# renderer = ["html"]
+# max-level = 4
